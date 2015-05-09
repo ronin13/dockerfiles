@@ -8,7 +8,9 @@ RUN yum install -y http://epel.check-update.co.uk/7/x86_64/e/epel-release-7-5.no
 
 RUN git clone --depth=1  git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 
-WORKDIR /linux.git/tools/vm 
+WORKDIR /linux/tools/vm 
+
+RUN  sed -i -e 's/apikfs/api/' Makefile
 
 RUN make page-types slabinfo page_owner_sort 
 
